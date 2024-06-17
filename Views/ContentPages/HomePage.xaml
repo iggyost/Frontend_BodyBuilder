@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.HomePage"
+             Title="HomePage"
+             Shell.NavBarIsVisible="False"
+             Loaded="ContentPage_Loaded">
+    <Grid BackgroundColor="#1C1C1E">
+        <Grid Margin="24,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"></RowDefinition>
+                <RowDefinition Height="96"></RowDefinition>
+                <RowDefinition Height="224"></RowDefinition>
+                <RowDefinition Height="24"></RowDefinition>
+                <RowDefinition Height="256"></RowDefinition>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Spacing="8"
+                                 Grid.Row="1">
+                <Label Text="Здравствуйте,"
+                       TextColor="White"
+                       FontSize="28"
+                       FontFamily="OpenSansRegular"></Label>
+                <Label TextColor="White"
+                       x:Name="userNameLabel"
+                       FontSize="28"
+                       FontFamily="OpenSansRegular"></Label>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2"
+                                 Spacing="8"
+                                 Margin="0,8">
+                <Label Text="План тренировок на сегодня"
+                       TextColor="White"
+                       FontFamily="OpenSansRegular"
+                       FontAttributes="Bold"
+                       FontSize="16"></Label>
+                <CarouselView x:Name="todayPlanCarouselView"
+                              Loop="False">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Border HeightRequest="160"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 16">
+                                <Grid>
+                                    <Image Aspect="AspectFill"
+                                           Source="{Binding CoverImage}"></Image>
+                                    <Label VerticalOptions="End"
+                                           Margin="16"
+                                           Text="{Binding Name}"
+                                           TextColor="White"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           FontFamily="OpenSansRegular"></Label>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="4"
+                                 Spacing="8">
+                <Label Text="Категории тренировок"
+                       TextColor="White"
+                       FontSize="18"></Label>
+                <CollectionView x:Name="categoriesCollectionView">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="4"></LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Content="{Binding Name}"
+                                         AutomationId="{Binding CategoryId}"
+                                         x:Name="categoryRadioButton"
+                                         CheckedChanged="categoryRadioButton_CheckedChanged"
+                                         Loaded="categoryRadioButton_Loaded"
+                                         Style="{StaticResource CategoriesRadioButton}"></RadioButton>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <CarouselView x:Name="trainingsCarouselView"
+                              Loop="False">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Border HeightRequest="160"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 16"
+                                    AutomationId="{Binding TrainingId}">
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="trainingGesture"
+                                                          Tapped="trainingGesture_Tapped"></TapGestureRecognizer>
+                                </Border.GestureRecognizers>
+                                <Grid>
+                                    <Image Aspect="AspectFill"
+                                           Source="{Binding CoverImage}"></Image>
+                                    <Border BackgroundColor="#7F000000"
+                                            VerticalOptions="End"
+                                            HeightRequest="64"
+                                            StrokeThickness="0">
+                                        <VerticalStackLayout Margin="16,8"
+                                                 Spacing="2">
+                                            <Label Text="{Binding Name}"
+                                                   TextColor="White"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   FontFamily="OpenSansRegular"></Label>
+                                            <Label AutomationId="{Binding CategoryId}"
+                                                   x:Name="categoryTrainingLabel"
+                                                   Loaded="categoryTrainingLabel_Loaded"
+                                                   TextColor="#FD3E3E"
+                                                   FontSize="14"
+                                                   FontFamily="OpenSansRegular"></Label>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

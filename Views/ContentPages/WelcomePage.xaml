@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.WelcomePage"
+             Title="WelcomePage"
+             NavigationPage.HasNavigationBar="False"
+             Padding="-2"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"></RowDefinition>
+                <RowDefinition Height="1.15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <CarouselView x:Name="backgroundCarouselView"
+                          IndicatorView="indicatorView">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Aspect="AspectFill"
+                               Source="{Binding Source}"></Image>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="#1C1C1E"
+                  Padding="0,8">
+                <VerticalStackLayout Spacing="18">
+                    <Label Text="СТРОИТЕЛЬ ТЕЛА"
+                           TextColor="#FD3E3E"
+                           FontSize="40"
+                           LineBreakMode="WordWrap"
+                           FontFamily="Oswald-SemiBold"
+                           HorizontalOptions="Center"></Label>
+                    <CarouselView IndicatorView="indicatorView"
+                              x:Name="textCarouselView"
+                                  HeightRequest="144">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Label HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="32"
+                                       TextColor="White"
+                                       WidthRequest="256"
+                                       LineBreakMode="WordWrap"
+                                       Text="{Binding Text}"></Label>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <IndicatorView x:Name="indicatorView"
+                                   IsEnabled="False"
+                                   Count="3"
+                                   Margin="0,32,0,0"
+                                   HorizontalOptions="Center"
+                                   SelectedIndicatorColor="#FD3E3E"
+                                   IndicatorColor="#3A3A3C">
+                        <IndicatorView.IndicatorTemplate>
+                            <DataTemplate>
+                                <Border WidthRequest="24"
+                                        HeightRequest="4"
+                                        Margin="2,0"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 2,2,2,2"></Border>
+                            </DataTemplate>
+                        </IndicatorView.IndicatorTemplate>
+                    </IndicatorView>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+        <Border BackgroundColor="Transparent"
+                StrokeThickness="0">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+            </Border.GestureRecognizers>
+        </Border>
+    </Grid>
+</ContentPage>

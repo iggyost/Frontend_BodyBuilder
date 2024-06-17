@@ -1,0 +1,129 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Frontend_BodyBuilder"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             x:Class="Frontend_BodyBuilder.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
+                <ResourceDictionary x:Name="appColors" Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary x:Name="appStyles" Source="Resources/Styles/Styles.xaml" />
+
+                <material:StyleResource ColorsOverride="{x:Reference appColors}" BasedOn="{x:Reference appStyles}" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Tab">
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="#1C1C1E" />
+                <Setter Property="Shell.TabBarTitleColor"
+                        Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor"
+                        Value="#505050" />
+            </Style>
+            
+            <Style TargetType="RadioButton" x:Key="TabbedRadioButton">
+                <Setter Property="ControlTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid>
+                                <VerticalStackLayout Spacing="6"
+                                                     HorizontalOptions="Center">
+                                    <Label x:Name="TextLabel"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           FontFamily="OpenSansRegular"
+                                           TextColor="White"
+                                           Text="{TemplateBinding Content}"></Label>
+                                    <Border x:Name="Container"
+                                            StrokeThickness="0"
+                                            HeightRequest="6"
+                                            Padding="24">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="15"></RoundRectangle>
+                                        </Border.StrokeShape>
+                                    </Border>
+                                </VerticalStackLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="Container"
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="#FD3E3E" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="Container" 
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="Transparent" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="CategoriesRadioButton">
+                <Setter Property="ControlTemplate">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid>
+                                <Border x:Name="Container"
+                                        StrokeThickness="0"
+                                        WidthRequest="128"
+                                        HeightRequest="40">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"></RoundRectangle>
+                                    </Border.StrokeShape>
+                                    <Label x:Name="TextLabel"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           TextColor="White"
+                                           FontFamily="OpenSansRegular"
+                                           Text="{TemplateBinding Content}"></Label>
+                                </Border>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="TextLabel" 
+                                                            Property="Label.TextColor" 
+                                                            Value="Black" />
+                                                    <Setter TargetName="Container"
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="#FD3E3E" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter TargetName="TextLabel" 
+                                                            Property="Label.TextColor" 
+                                                            Value="White" />
+                                                    <Setter TargetName="Container" 
+                                                            Property="Border.BackgroundColor" 
+                                                            Value="#2C2C2E" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

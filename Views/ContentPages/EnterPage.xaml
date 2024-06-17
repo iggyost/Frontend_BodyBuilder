@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.EnterPage"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             Title="EnterPage"
+             NavigationPage.HasNavigationBar="False"
+             Padding="-8">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Image Source="back_enter.png"
+                   Aspect="AspectFill"></Image>
+            <Label HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="36"
+                   Text="Добро пожаловать!"
+                   TextColor="White"></Label>
+            <Grid Margin="16,16,16,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="86"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Content="Логин"
+                                 TextColor="White"
+                                 VerticalOptions="Center"
+                                 IsChecked="True"
+                                 x:Name="loginRb"
+                                 CheckedChanged="loginRb_CheckedChanged"
+                                 Style="{StaticResource TabbedRadioButton}"></RadioButton>
+                    <RadioButton Content="Регистрация"
+                                 TextColor="White"
+                                 Grid.Column="1"
+                                 VerticalOptions="Center"
+                                 x:Name="registrationRb"
+                                 CheckedChanged="registrationRb_CheckedChanged"
+                                 Style="{StaticResource TabbedRadioButton}"></RadioButton>
+                    <Label Text="СТРОИТЕЛЬ ТЕЛА"
+                           TextColor="#FD3E3E"
+                           Grid.Column="2"
+                           FontSize="24"
+                           FontFamily="Oswald-SemiBold"
+                           Margin="16,0,0,24"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"></Label>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid x:Name="registrationGrid"
+              Grid.Row="1"
+              BackgroundColor="#1C1C1E"
+              IsVisible="False">
+            <VerticalStackLayout Margin="48,86"
+                                 Spacing="16">
+                <Border BackgroundColor="#282828"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 15">
+                    <Entry FontSize="17"
+                           x:Name="emailEntry"
+                           Margin="20,0"
+                           MaxLength="30"
+                           TextColor="White"
+                           Placeholder="Email" 
+                           PlaceholderColor="#5C5C5C"></Entry>
+                </Border>
+                <Border BackgroundColor="#282828"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 15">
+                    <Entry FontSize="17"
+                           x:Name="nameEntry"
+                           Margin="20,0"
+                           MaxLength="24"
+                           TextColor="White"
+                           Placeholder="Ваше имя" 
+                           PlaceholderColor="#5C5C5C"></Entry>
+                </Border>
+                <Border BackgroundColor="#282828"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 15">
+                    <Entry FontSize="17"
+                           x:Name="passwordEntry"
+                           Margin="20,0"
+                           IsPassword="True"
+                           MaxLength="24"
+                           TextColor="White"
+                           Placeholder="Пароль" 
+                           PlaceholderColor="#5C5C5C"></Entry>
+                </Border>
+                <Button Margin="0,48"
+                        x:Name="registrationButton"
+                        Clicked="registrationButton_Clicked"
+                        CornerRadius="40"
+                        HorizontalOptions="Center"
+                        FontSize="16"
+                        Padding="24,4"
+                        BackgroundColor="#FD3E3E"
+                        Text="Регистрация   ❯"></Button>
+            </VerticalStackLayout>
+        </Grid>
+        <Grid x:Name="loginGrid"
+              IsVisible="True"
+              Grid.Row="1"
+              BackgroundColor="#1C1C1E">
+            <VerticalStackLayout Margin="48,86"
+                                 Spacing="16">
+                <Border BackgroundColor="#282828"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 15">
+                    <Entry FontSize="17"
+                           x:Name="emailAuthEntry"
+                           Margin="20,0"
+                           MaxLength="30"
+                           TextColor="White"
+                           Placeholder="Email" 
+                           PlaceholderColor="#5C5C5C"></Entry>
+                </Border>
+
+                <Border BackgroundColor="#282828"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 15">
+                    <Entry FontSize="17"
+                           x:Name="passwordAuthEntry"
+                           Margin="20,0"
+                           IsPassword="True"
+                           MaxLength="24"
+                           TextColor="White"
+                           Placeholder="Пароль" 
+                           PlaceholderColor="#5C5C5C"></Entry>
+                </Border>
+                <Button Margin="0,110"
+                        x:Name="loginButton"
+                        Clicked="loginButton_Clicked"
+                        CornerRadius="40"
+                        HorizontalOptions="Center"
+                        FontSize="16"
+                        Padding="24,4"
+                        BackgroundColor="#FD3E3E"
+                        Text="Войти   ❯"></Button>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

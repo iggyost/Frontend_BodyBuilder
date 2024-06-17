@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.TrainingPreviewPage"
+             Title="TrainingPreviewPage"
+             Loaded="ContentPage_Loaded">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image x:Name="backgroundImage"
+                   Aspect="AspectFill"></Image>
+            <Grid BackgroundColor="#1C1C1E"
+                  Grid.Row="1">
+                <VerticalStackLayout Spacing="8"
+                                     Margin="16,20">
+                    <Label x:Name="titleLabel"
+                           TextColor="White"
+                           FontSize="22"
+                           FontFamily="Oswald-SemiBold"></Label>
+                    <Label x:Name="categoryLabel"
+                           FontFamily="OpenSansRegular"
+                           TextColor="#FD3E3E"></Label>
+                    <HorizontalStackLayout Spacing="8">
+                        <Border StrokeShape="RoundRectangle 50"
+                                StrokeThickness="0"
+                                BackgroundColor="#2C2C2E"
+                                HeightRequest="32"
+                                WidthRequest="96">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="time_icon.png"
+                                       Aspect="AspectFill"
+                                       Margin="4"></Image>
+                                <Label Grid.Column="1"
+                                       x:Name="timeLabel"
+                                       VerticalOptions="Center"
+                                       TextColor="White"
+                                       FontFamily="OpenSansRegular"></Label>
+                            </Grid>
+                        </Border>
+                        <Border StrokeShape="RoundRectangle 50"
+                                StrokeThickness="0"
+                                BackgroundColor="#2C2C2E"
+                                HeightRequest="32"
+                                WidthRequest="96">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="calories_icon.png"
+                                       Aspect="AspectFill"
+                                       Margin="4"></Image>
+                                <Label Grid.Column="1"
+                                       x:Name="caloriesLabel"
+                                       VerticalOptions="Center"
+                                       TextColor="White"
+                                       FontFamily="OpenSansRegular"></Label>
+                            </Grid>
+                        </Border>
+                    </HorizontalStackLayout>
+                    <Label TextColor="White"
+                           LineBreakMode="WordWrap"
+                           x:Name="descLabel"
+                           FontSize="16"
+                           Margin="0,16,24,0"></Label>
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+        <Border StrokeShape="RoundRectangle 100"
+                StrokeThickness="0" 
+                BackgroundColor="#7F000000"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                HeightRequest="40"
+                WidthRequest="40"
+                Margin="24">
+            <Grid Margin="8">
+                <ImageButton x:Name="backButton"
+                             Clicked="backButton_Clicked"
+                             Source="return_icon.png"
+                             Aspect="AspectFill"></ImageButton>
+            </Grid>
+        </Border>
+        <Button x:Name="startTrainingButton"
+                Clicked="startTrainingButton_Clicked"
+                CornerRadius="40"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                FontSize="18"
+                FontAttributes="Bold"
+                FontFamily="OpenSansRegular"
+                Padding="56,0"
+                HeightRequest="56"
+                Margin="0,24"
+                BackgroundColor="#FD3E3E"
+                Text="Начать тренировку"
+                TextColor="Black"></Button>
+    </Grid>
+</ContentPage>

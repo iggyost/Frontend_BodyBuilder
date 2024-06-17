@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.ProfilePage"
+             Title="ProfilePage"
+             Shell.NavBarIsVisible="False"
+             Loaded="ContentPage_Loaded">
+    <Grid BackgroundColor="#1C1C1E">
+        <VerticalStackLayout Margin="16"
+                             Spacing="8">
+            <Label Text="Ваш профиль"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontSize="36"
+                   FontAttributes="Bold"></Label>
+            <Label Text="Ваши данные:"
+                   TextColor="White"
+                   HorizontalOptions="Start"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   Margin="0,16,0,0"></Label>
+            <HorizontalStackLayout Spacing="4">
+                <Label Text="Имя пользователя:"
+                       TextColor="White"
+                       FontFamily="Oswald-Light"
+                       FontSize="20"></Label>
+                <Label x:Name="usernameLabel"
+                       TextColor="White"
+                       FontSize="20"
+                       FontFamily="Oswald-Light"></Label>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="4">
+                <Label Text="Email пользователя:"
+                       TextColor="White"
+                       FontSize="20"
+                       FontFamily="Oswald-Light"></Label>
+                <Label x:Name="emailLabel"
+                       TextColor="White"
+                       FontSize="20"
+                       FontFamily="Oswald-Light"></Label>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <Button Margin="0,48"
+                x:Name="exitButton"
+                CornerRadius="40"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                FontSize="18"
+                Padding="24,4"
+                BackgroundColor="#FD3E3E"
+                Text="Выход из аккаунта"
+                Clicked="exitButton_Clicked"></Button>
+    </Grid>
+</ContentPage>

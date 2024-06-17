@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Frontend_BodyBuilder.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Frontend_BodyBuilder.Views.ContentPages"
+    Shell.FlyoutBehavior="Disabled">
+    <Shell.Items>
+        <TabBar>
+            <Tab Icon="home_icon.png">
+                <ShellContent ContentTemplate="{DataTemplate local:HomePage}"
+                              Route="Home">
+                </ShellContent>
+            </Tab>
+            <Tab Icon="stat_icon.png">
+                <ShellContent ContentTemplate="{DataTemplate local:StatisticsPage}"
+                              Route="Statistics">
+                </ShellContent>
+            </Tab>
+            <Tab Icon="profile_icon.png">
+                <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}"
+                              Route="Profile"></ShellContent>
+            </Tab>
+        </TabBar>
+    </Shell.Items>
+</Shell>

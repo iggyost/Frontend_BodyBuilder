@@ -1,0 +1,133 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>Frontend_BodyBuilder</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>Frontend_BodyBuilder</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.frontend_bodybuilder</ApplicationId>
+		<ApplicationIdGuid>c884ed04-70ff-4fcf-b379-6fd234ff2240</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Oswald-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Oswald-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Oswald-Light.ttf" />
+	  <None Remove="Resources\Fonts\Oswald-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Oswald-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Oswald-SemiBold.ttf" />
+	  <None Remove="Resources\Images\a_back_welcome.png" />
+	  <None Remove="Resources\Images\back_enter.png" />
+	  <None Remove="Resources\Images\barell.gif" />
+	  <None Remove="Resources\Images\bicycle.gif" />
+	  <None Remove="Resources\Images\b_back_welcome.png" />
+	  <None Remove="Resources\Images\calories_icon.png" />
+	  <None Remove="Resources\Images\cheststretch.gif" />
+	  <None Remove="Resources\Images\c_back_welcome.png" />
+	  <None Remove="Resources\Images\home_icon.png" />
+	  <None Remove="Resources\Images\lunge.gif" />
+	  <None Remove="Resources\Images\pikepushup.gif" />
+	  <None Remove="Resources\Images\pistolsquat.gif" />
+	  <None Remove="Resources\Images\plank.gif" />
+	  <None Remove="Resources\Images\profile_icon.png" />
+	  <None Remove="Resources\Images\pushup.gif" />
+	  <None Remove="Resources\Images\return_icon.png" />
+	  <None Remove="Resources\Images\splitjump.gif" />
+	  <None Remove="Resources\Images\splitsquats.gif" />
+	  <None Remove="Resources\Images\squat.gif" />
+	  <None Remove="Resources\Images\squatjump.gif" />
+	  <None Remove="Resources\Images\stat_icon.png" />
+	  <None Remove="Resources\Images\supermanpullup.gif" />
+	  <None Remove="Resources\Images\supermanw.gif" />
+	  <None Remove="Resources\Images\time_icon.png" />
+	  <None Remove="Resources\Images\tpushup.gif" />
+	  <None Remove="Resources\Images\training_image_aa.png" />
+	  <None Remove="Resources\Images\training_image_ab.png" />
+	  <None Remove="Resources\Images\training_image_ac.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CrossCalendarMAUI" Version="1.0.8" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.5" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="UraniumUI" Version="2.5.6" />
+		<PackageReference Include="UraniumUI.Material" Version="2.5.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\ContentPages\EnterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\StatisticsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\TrainingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\TrainingPreviewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentPages\WelcomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android'">
+	  <PackageReference Include="DevExpress.Maui.Editors">
+	    <Version>23.1.10</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+	  <PackageReference Include="DevExpress.Maui.Editors">
+	    <Version>23.1.10</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>

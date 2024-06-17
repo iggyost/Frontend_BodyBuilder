@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Frontend_BodyBuilder.Views.ContentPages.StatisticsPage"
+             xmlns:cross="clr-namespace:CrossCalendarMAUI;assembly=CrossCalendarMAUI"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             Title="StatisticsPage"
+             Shell.NavBarIsVisible="False"
+             Loaded="ContentPage_Loaded">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+    <Grid BackgroundColor="#1C1C1E">
+        <Border ZIndex="1"
+                Margin="0,0,0,172"
+                BackgroundColor="Transparent"
+                StrokeThickness="0"
+                x:Name="disableBorder"
+                IsVisible="False"></Border>
+        <ActivityIndicator Color="DeepSkyBlue"
+                           WidthRequest="96"
+                           HeightRequest="96"
+                           Margin="0,0,0,172"
+                           ZIndex="1"
+                           x:Name="loadingCalendar"></ActivityIndicator>
+        <VerticalStackLayout Margin="16,12,16,24">
+            <dxe:DXCalendar x:Name="calendarTraining"
+                            BackgroundColor="Transparent"
+                            SelectedDateChanged="calendarTraining_SelectedDateChanged">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance BackgroundColor="Transparent"
+                                                  HeaderTitleTextColor="#FD3E3E"
+                                                  HeaderSubtitleTextColor="White"></dxe:CalendarHeaderAppearance>
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance FontAttributes="Bold"
+                                                   SelectedTextColor="Black"
+                                                   TodayTextColor="White"
+                                                   TodayEllipseBackgroundColor="#7FFD3E3E"
+                                                   TodayFontAttributes="Italic"
+                                                   SelectedEllipseBackgroundColor="#FD3E3E"
+                                                   TextColor="White"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance TextColor="#FD3E3E"></dxe:CalendarDayOfWeekCellAppearance>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+            <!--<cross:Calendar Margin="0,24"
+                            x:Name="calendarTraining"
+                            ZIndex="0"
+                            ClickedDate="calendarTraining_ClickedDate">
+            </cross:Calendar>-->
+            <!--<plugin:Calendar x:Name="calendarTrainings"
+                             BackgroundColor="Transparent"
+                             DeselectedDayTextColor="White"
+                             SelectedDateColor="#FD3E3E"
+                             DaysTitleColor="#FD3E3E"
+                             ArrowsBackgroundColor="#FD3E3E"
+                             ArrowsColor="White"
+                             MonthLabelColor="White"
+                             YearLabelColor="White"
+                             SelectedDayBackgroundColor="#FD3E3E"
+                             ArrowsFontSize="18"
+                             TodayTextColor="#FD3E3E"
+                             TodayOutlineColor="#FD3E3E"
+                             Culture="{Binding Culture}"
+                             DayTappedCommand="{Binding SelectedDayChangedCommand}"></plugin:Calendar>-->
+            <VerticalStackLayout Spacing="8"
+                                 Margin="8">
+                <HorizontalStackLayout Spacing="8">
+                    <Image Source="calories_icon.png"
+                           Aspect="AspectFill"
+                           WidthRequest="24"
+                           HeightRequest="24"
+                           Margin="0,6,0,0"></Image>
+                    <Label x:Name="ccalLabel"
+                           Text="{Binding Calories}"
+                           TextColor="White"
+                           FontSize="22"></Label>
+                    <Label Text="ккал потрачено"
+                           TextColor="White"
+                           FontSize="22"></Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="8">
+                    <Image Source="time_icon.png"
+                           Aspect="AspectFill"
+                           HeightRequest="24"
+                           WidthRequest="24"
+                           Margin="0,6,0,0"
+                           VerticalOptions="Center"></Image>
+                    <Label x:Name="timeLabel"
+                           Text="{Binding SpentTime}"
+                           FontSize="22"
+                           TextColor="White"></Label>
+                    <Label Text="затраченное время"
+                           TextColor="White"
+                           FontSize="22"></Label>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="8">
+                    <Label x:Name="countTrainingsLabel"
+                           Text="{Binding CountTrainings}"
+                           TextColor="White"
+                           FontSize="22"></Label>
+                    <Label Text="тренировок пройдено"
+                           TextColor="White"
+                           FontSize="22"></Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
